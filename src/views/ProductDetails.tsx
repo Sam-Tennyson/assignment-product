@@ -31,7 +31,7 @@ const ProductDetails: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [productData, setProductData] = useState<ProductProps | any>();
     const [isAdded, setIsAdded] = useState<boolean>(false);
 
