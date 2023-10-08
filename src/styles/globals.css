@@ -4,3 +4,6 @@
 
 /* Tailwind Styles */
 
+.product-detail-card-border {
+    @apply border-2 border-yellow-400 rounded-md p-3
+}
