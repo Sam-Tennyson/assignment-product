@@ -53,8 +53,8 @@ const CommonCard: React.FC<CommonCardProps> = ({ data, key, handleClick }) => {
 				</div>
 			</div>
 			<div className='md:text-sm  xs:text-xs text-xs flex items-center justify-between mb-2'>
-				<span className='' >&#8377; {data?.price}</span> 
-				<span className='text-xs line-through' > &#8377; {Math.floor(((data?.price ?? 1) *100)/(100-(data?.discountPercentage ?? 0)))}</span> 
+				<span className='' >&#8377; {data?.price?.toLocaleString('en-US')}</span> 
+				<span className='text-xs line-through' > &#8377; {Math.floor(((data?.price ?? 1) *100)/(100-(data?.discountPercentage ?? 0)))?.toLocaleString('en-US')}</span> 
 				<span className='' >{data?.discountPercentage} % off</span>
 			</div>
 			<div className='text-xl mb-2'>{data?.title}</div>

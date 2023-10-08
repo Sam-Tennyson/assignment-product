@@ -68,8 +68,10 @@ const ProductDetails: React.FC = () => {
             {!!productData ? (
                 <div className="">
                     <div className="mb-4 flex items-start justify-between ">
-                        <h2 className="md:text-4xl underline mb-4 text-xl">Product Details</h2>
-                        <button className="md:p-2 px-3 border-2 border-grey-500 rounded-md hover:underline" onClick={() => navigate(ROUTE_CONSTANTS.HOME)}> Back </button>
+                        <h2 className="md:text-4xl underline mb-4 text-lg">Product Details</h2>
+                        <button className='p-2 flex items-center justify-start rounded-md font-medium bg-yellow-500' onClick={() => navigate(ROUTE_CONSTANTS.HOME)}>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="17.5" cy="19.5" r="1.5"></circle></svg>
+						More products</button>
                     </div>
                     <div className="grid grid-cols-8 gap-4">
                         <div className="md:col-start-1 md:col-end-3 sm:col-start-1 sm:col-end-5 col-start-1 col-end-9 mx-auto ">
@@ -102,8 +104,8 @@ const ProductDetails: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className='md:text-sm  xs:text-xs text-xs flex items-center justify-start mb-5 '>
-                                    <span className='mr-4  text-3xl' >&#8377; {productData?.price}</span>
-                                    <span className='text-xl line-through mr-4' > &#8377; {Math.floor(((productData?.price ?? 1) * 100) / (100 - (productData?.discountPercentage ?? 0)))}</span>
+                                    <span className='mr-4  text-3xl' >&#8377; {productData?.price?.toLocaleString('en-US')}</span>
+                                    <span className='text-xl line-through mr-4' > &#8377; {Math.floor(((productData?.price ?? 1) * 100) / (100 - (productData?.discountPercentage ?? 0)))?.toLocaleString('en-US')}</span>
                                     <span className='mr-2 text-2xl ' >{productData?.discountPercentage} % off</span>
                                 </div>
                                 <p className="text-sm tracking-wide">

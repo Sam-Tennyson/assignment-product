@@ -24,6 +24,14 @@ export const BagSlice = createSlice({
                 return sum + (product.price * product.qty);
             }, 0)
         },
+        deleteProduct: (state, action: PayloadAction<number>) => {
+            const newArray = state.bagData.filter((obj) =>obj.id !== action.payload);
+            state.bagData = newArray
+            state.bagData_count = newArray?.length
+            state.total_price = newArray.reduce((sum, product) => {
+                return sum + (product.price * product.qty);
+            }, 0)
+        },
         incrementQty: (state, action: PayloadAction<number>) =>{
          
             const product = state.bagData.find(item => item?.id === action.payload)
@@ -36,7 +44,7 @@ export const BagSlice = createSlice({
             }, 0)
 
         },
-        decrementQty: (state, action: PayloadAction<any[]>) =>{
+        decrementQty: (state, action: PayloadAction<number>) =>{
             const product = state.bagData.find(item => item?.id === action.payload)
             if (product?.qty > 1) {
                 product.qty -= 1
@@ -52,6 +60,6 @@ export const BagSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setBagData, incrementQty, decrementQty } = BagSlice.actions;
+export const { setBagData, incrementQty, decrementQty, deleteProduct } = BagSlice.actions;
 
 export default BagSlice.reducer;
