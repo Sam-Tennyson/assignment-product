@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Loader from './Loader';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_CONSTANTS } from '../shared/Routes';
 
 interface BagsListProps {
     displayData: any[],
@@ -47,11 +49,11 @@ const CommonCard: React.FC<CommonCardProps> = ({
             key={key}
             className='border border-gray-200 rounded-lg shadow  hover:border-gray-200 hover:border-2 p-4 text-left mb-4'
         >
-            <div className="grid grid-cols-2">
+            <div className="grid md:grid-cols-2 grid-cols-1 mx-auto">
                 <div className="mb-3">
                     {isLoading && <Loader />}
                     <img
-                        className={`rounded-t-lg h-40 w-full object-contain p-8 ${isLoading ? 'hidden' : 'visited:'} `}
+                        className={`rounded-t-lg h-40 w-full object-contain md:p-8 p-3 ${isLoading ? 'hidden' : 'visited:'} `}
                         src={data?.thumbnail}
                         onLoad={handleImageLoad}
                         onError={handleImageError}
@@ -61,7 +63,7 @@ const CommonCard: React.FC<CommonCardProps> = ({
                 <div className='mb-3'>
                     <div className='flex items-center justify-between relative'>
                         <div className='text-xl mb-2 font-medium'>{data?.title}</div>
-                        <em className='absolute -right-3 -top-4 cursor-pointer'
+                        <em className='absolute -right-3 md:-top-4 -top-44 cursor-pointer'
                             onClick={() => handleDeleteProduct(data)}
                         ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg></em>
                     </div>
@@ -92,8 +94,9 @@ const BagsList: React.FC<BagsListProps> = ({
     handleDecrement,
     handleDeleteProduct
 }) => {
+    const navigate = useNavigate();
     return (
-        <div className='grid grid-cols-1 md:w-1/2  '>
+        <div className='grid grid-cols-1 md:w-1/2 mx-auto '>
             {displayData?.map((item) => (
                 <CommonCard
                     key={item?.id}
@@ -103,6 +106,11 @@ const BagsList: React.FC<BagsListProps> = ({
                     data={item}
                 />
             ))}
+            <div className='text-left'>
+                <button className='p-2 flex items-center justify-start rounded-md font-medium bg-yellow-500' onClick={() => navigate(ROUTE_CONSTANTS.HOME)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="17.5" cy="19.5" r="1.5"></circle></svg>
+                    You can add more products</button>
+            </div>
         </div>
     )
 }

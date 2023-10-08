@@ -67,9 +67,9 @@ const ProductDetails: React.FC = () => {
         <>
             {!!productData ? (
                 <div className="">
-                    <div className="mb-4 flex items-start justify-between ">
-                        <h2 className="md:text-4xl underline mb-4 text-lg">Product Details</h2>
-                        <button className='p-2 flex items-center justify-start rounded-md font-medium bg-yellow-500' onClick={() => navigate(ROUTE_CONSTANTS.HOME)}>
+                    <div className="mb-4 flex  items-start justify-between  ">
+                        <h2 className="md:text-4xl underline mb-4 text-lg font-semibold">Product Details</h2>
+                        <button className='text-sm md:p-2 p-1 flex items-center justify-start rounded-md font-medium bg-yellow-500' onClick={() => navigate(ROUTE_CONSTANTS.HOME)}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="17.5" cy="19.5" r="1.5"></circle></svg>
 						More products</button>
                     </div>
@@ -95,7 +95,7 @@ const ProductDetails: React.FC = () => {
                             <div className="product-detail-card-border">
                                 <div className="flex justify-between">
 
-                                    <h2 className="md:text-2xl text-left mb-5 text-3xl font-medium" >{productData?.title}</h2>
+                                    <h2 className="md:text-2xl text-left mb-5 text-lg font-medium" >{productData?.title}</h2>
                                     <div className='flex items-center justify-between relative mb-4'>
                                         <div className='text-sm  bg-green-700 p-2 mb-2 w-auto flex items-center justify-start text-white rounded-md '>
                                             <span className='pr-2'>{productData?.rating}</span>
@@ -103,10 +103,10 @@ const ProductDetails: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='md:text-sm  xs:text-xs text-xs flex items-center justify-start mb-5 '>
-                                    <span className='mr-4  text-3xl' >&#8377; {productData?.price?.toLocaleString('en-US')}</span>
-                                    <span className='text-xl line-through mr-4' > &#8377; {Math.floor(((productData?.price ?? 1) * 100) / (100 - (productData?.discountPercentage ?? 0)))?.toLocaleString('en-US')}</span>
-                                    <span className='mr-2 text-2xl ' >{productData?.discountPercentage} % off</span>
+                                <div className='md:text-sm   text-md flex items-center justify-start mb-5 '>
+                                    <span className='mr-4  md:text-3xl font-medium' >&#8377; {productData?.price?.toLocaleString('en-US')}</span>
+                                    <span className=' line-through mr-4' > &#8377; {Math.floor(((productData?.price ?? 1) * 100) / (100 - (productData?.discountPercentage ?? 0)))?.toLocaleString('en-US')}</span>
+                                    <span className='mr-2 font-medium ' >{productData?.discountPercentage} % off</span>
                                 </div>
                                 <p className="text-sm tracking-wide">
                                     {productData?.description}
