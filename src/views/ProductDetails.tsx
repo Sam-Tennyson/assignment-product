@@ -13,6 +13,8 @@ import Loader from "../components/Loader";
 
 // actions
 import { setBagData } from "../store/slice/BagSlice";
+
+// rootstate proptype
 import { RootState } from "../store/rootReducer";
 
 interface ProductProps {

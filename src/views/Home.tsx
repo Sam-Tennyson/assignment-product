@@ -12,6 +12,8 @@ import { setRecipeData } from "../store/slice/ProductSlice"
 
 // constants
 import { APP_BASE_URL } from "../shared/Constants"
+
+// rootstate proptype
 import { RootState } from "../store/rootReducer"
 
 // routes
@@ -41,7 +43,6 @@ const Home: React.FC = () => {
         getProductsdata()
     }, [])
 
-    console.log(productDataRed);
     return (
         <>
             <div className='mx-auto'>

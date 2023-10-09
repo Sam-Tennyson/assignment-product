@@ -1,13 +1,19 @@
 // libs
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../store/rootReducer'
+import { useNavigate } from 'react-router-dom'
 
 // components
 import BagsList from '../components/BagsList'
+
+// actions
 import { decrementQty, deleteProduct, incrementQty } from '../store/slice/BagSlice'
-import { useNavigate } from 'react-router-dom'
+
+// actions
 import { ROUTE_CONSTANTS } from '../shared/Routes'
+
+// rootstate proptype
+import { RootState } from '../store/rootReducer'
 
 interface BagProps {
 	id: number;
